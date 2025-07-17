@@ -1,0 +1,17 @@
+// Scroll to top on refresh
+window.onbeforeunload = () => {
+  window.scrollTo(0, 0);
+};
+
+// Section reveal animation
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+sections.forEach(section => observer.observe(section));
